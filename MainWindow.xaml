@@ -4,8 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Filer2"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" ResizeMode="NoResize">
+        mc:Ignorable="d" Height="450" Width="800" ResizeMode="NoResize" WindowState="Minimized">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="6*"/>
@@ -13,40 +12,53 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Button Content="Удалить" Margin="258,3,9,10" Grid.Column="1" Grid.Row="1" Click="Button_Click"/>
-        <Button Content="Переместить" Margin="102,3,165,10" Grid.Column="1" Grid.Row="1" Click="Button_Click_1"/>
-        
-        <StackPanel Name="Files" Grid.Column="1" Grid.Row="0">
-            <TextBlock Text="Отметте галочкой форматы файлов, которые хотите удалить или переместить." Margin="15,10,5,5" TextWrapping="Wrap"/>
-            <CheckBox x:Name="check_txt" Margin="15,5,5,5" Content="*.txt" Click="check_txt_Click"/>
-            <CheckBox x:Name="check_png" Margin="15,5,5,5" Content="*.png" Click="check_png_Click"/>
-            <CheckBox x:Name="check_jpg" Margin="15,5,5,5" Content="*.jpg" Click="check_jpg_Click"/>
-            <CheckBox x:Name="check_jpeg" Margin="15,5,5,5" Content="*.jpeg" Click="check_jpeg_Click"/>
-            <CheckBox x:Name="check_docx" Margin="15,5,5,5" Content="*.docx" Click="check_docx_Click"/>
-            <CheckBox x:Name="check_xlsx" Margin="15,5,5,5" Content="*.xlsx" Click="check_xlsx_Click"/>
-            <CheckBox x:Name="check_pdf" Margin="15,5,5,5" Content="*.pdf" Click="check_pdf_Click"/>
-            <CheckBox x:Name="check_bmp" Margin="15,5,5,5" Content="*.bmp" Click="check_bmp_Click"/>
-            <CheckBox x:Name="check_gif" Margin="15,5,5,5" Content="*.gif" Click="check_gif_Click"/>
-            <CheckBox x:Name="check_tiff" Margin="15,5,5,5" Content="*.tiff" Click="check_tiff_Click"/>
-            <CheckBox x:Name="check_inx" Margin="15,5,5,5" Content="*.inx" Click="check_inx_Click"/>
-            <CheckBox x:Name="check_torrent" Margin="15,5,5,5" Content="*.torrent" Click="check_torrent_Click"/>
+        <Button Content="Удалить" Margin="258,3,9,10" Grid.Column="2" Grid.Row="1" Click="Button_Click" ToolTip="Удаление происходит с концами."/>
+        <Button Content="Переместить" Margin="102,3,165,10" Grid.Column="2" Grid.Row="1" Click="Button_Click_1"/>
+
+        <StackPanel Name="Files" Grid.Column="2" Grid.Row="0">
+            <TreeView Height="371">
+                <TextBlock Text="Отметте галочкой форматы файлов, которые хотите удалить или переместить." Margin="15,10,5,5" TextWrapping="Wrap" Height="37" Width="339"/>
+                <TreeViewItem Header="Изображения">
+                    <CheckBox x:Name="check_png" Margin="15,5,5,5" Content="*.png" Click="check_png_Click"/>
+                    <CheckBox x:Name="check_jpg" Margin="15,5,5,5" Content="*.jpg" Click="check_jpg_Click"/>
+                    <CheckBox x:Name="check_jpeg" Margin="15,5,5,5" Content="*.jpeg" Click="check_jpeg_Click"/>
+                    <CheckBox x:Name="check_bmp" Margin="15,5,5,5" Content="*.bmp" Click="check_bmp_Click"/>
+                    <CheckBox x:Name="check_gif" Margin="15,5,5,5" Content="*.gif" Click="check_gif_Click"/>
+                    <CheckBox x:Name="check_tiff" Margin="15,5,5,5" Content="*.tiff" Click="check_tiff_Click"/>
+                    <CheckBox x:Name="check_ai" Margin="15,5,5,5" Content="*.ai" Click="check_ai_Click"/>
+                </TreeViewItem>
+                <TreeViewItem Header="Документы">
+                    <CheckBox x:Name="check_txt" Margin="15,5,5,5" Content="*.txt" Click="check_txt_Click"/>
+                    <CheckBox x:Name="check_docx" Margin="15,5,5,5" Content="*.docx" Click="check_docx_Click"/>
+                    <CheckBox x:Name="check_xlsx" Margin="15,5,5,5" Content="*.xlsx" Click="check_xlsx_Click"/>
+                    <CheckBox x:Name="check_pdf" Margin="15,5,5,5" Content="*.pdf" Click="check_pdf_Click"/>
+                    <CheckBox x:Name="check_inx" Margin="15,5,5,5" Content="*.inx" Click="check_inx_Click"/>
+                </TreeViewItem>
+                <TreeViewItem Header="Видео">
+                    <CheckBox x:Name="check_mp4" Margin="15,5,5,5" Content="*.mp4" Click="check_mp4_Click"/>
+                </TreeViewItem>
+                <TreeViewItem Header="Другое">
+                    <CheckBox x:Name="check_torrent" Margin="15,5,5,5" Content="*.torrent" Click="check_torrent_Click"/>
+                </TreeViewItem>
+            </TreeView>
         </StackPanel>
         <StackPanel Name="Option" Grid.Column="0" Grid.Row="0">
-            <TextBlock Text="Выберите путь до папки с файлами:" Margin="15,10,5,5"/>
+            <TextBlock Text="Выберите путь к файлам:" Margin="15,10,5,5"/>
             <StackPanel Name="Old_addres" Orientation="Horizontal">
                 <TextBox x:Name="addresOld" Grid.Column="0" Grid.Row="0" Margin="15,10,5,5" Width="300" Height="20" IsEnabled="False"/>
-                <Button x:Name="btn_addres_old" Content="Вставить" Margin="0,10,0,5" Click="btn_addres_old_Click"/>
+                <Button x:Name="btn_addres_old" Content="Выбрать" Margin="0,10,0,5" Click="btn_addres_old_Click" ToolTip="путь к файлам с которыми будем работать"/>
             </StackPanel>
-            <TextBlock Text="Выберите путь до папки назначения:" Margin="15,10,5,5"/>
+            <TextBlock Text="Выберите, куда поместить файлы при перемещении:" Margin="15,10,5,5"/>
             <StackPanel Name="New_addres" Orientation="Horizontal" Visibility="Collapsed">
                 <TextBox x:Name="addresNew" Grid.Column="0" Grid.Row="0" Margin="15,5,5,5" Height="20" Width="300" IsEnabled="False"/>
-                <Button x:Name="btn_addres_new" Content="Вставить" Margin="0,5,0,5" Click="btn_addres_new_Click"/>
+                <Button x:Name="btn_addres_new" Content="Выбрать" Margin="0,5,0,5" Click="btn_addres_new_Click" ToolTip="куда спрятать эти файлы?"/>
             </StackPanel>
-            <CheckBox x:Name="check_path" Content="Снимите галочку если выберите путь самомтоятельно" Margin="15,10,5,5" IsChecked="True" Click="CheckBox_Checked"/>
+            <CheckBox x:Name="check_path" Content="Автоматически" Margin="15,10,5,5" IsChecked="True" Click="CheckBox_Checked" ToolTip="снять чтоб выбрать самостоятельно."/>
         </StackPanel>
-    
+
     </Grid>
 </Window>

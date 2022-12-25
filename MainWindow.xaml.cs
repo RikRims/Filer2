@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Forms.VisualStyles;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace Filer2
 {
@@ -132,6 +133,16 @@ namespace Filer2
         {
             addFiles((string)check_torrent.Content, check_torrent.IsChecked);
         }
+
+        private void check_ai_Click(object sender, RoutedEventArgs e)
+        {
+            addFiles((string)check_ai.Content, check_ai.IsChecked);
+        }
+
+        private void check_mp4_Click(object sender, RoutedEventArgs e)
+        {
+            addFiles((string)check_mp4.Content, check_mp4.IsChecked);
+        }
         /// <summary>
         /// конец добавления форматов
         /// </summary>
@@ -139,14 +150,21 @@ namespace Filer2
         //удаление файлов
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            foreach (var format in typeFiles)
+            DialogResult dialogResult = System.Windows.Forms.MessageBox.Show("Это действие удаляет файлы полностью (не в корзину!). Продолжить?", "Удаление!", MessageBoxButtons.OKCancel);
+            if (dialogResult == System.Windows.Forms.DialogResult.OK)
             {
-                string[] _files = Directory.GetFiles(addresOld.Text, format);
-                foreach (string _file in _files)
+                if (typeFiles.Count == 0)
+                    System.Windows.Forms.MessageBox.Show("Вы не выбрали форматы файлов!", "Ошибка 1");
+                else foreach (var format in typeFiles)
                 {
-                    File.Delete(_file);
+                    string[] _files = Directory.GetFiles(addresOld.Text, format);
+                    foreach (string _file in _files)
+                    {
+                        File.Delete(_file);
+                    }
                 }
             }
+
         }
 
         //перемещение файлов
@@ -157,20 +175,26 @@ namespace Filer2
             {
                 string nameDir = DateTime.Today.ToString();
                 int found = nameDir.IndexOf(" ");
-                Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/" + nameDir.Substring(0, found));
-                pathDir = System.IO.Path.GetFullPath(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/" + nameDir.Substring(0, found));
+                Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Filer2" + "/" + nameDir.Substring(0, found));
+                pathDir = System.IO.Path.GetFullPath(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Filer2" + "/" + nameDir.Substring(0, found));
             }
             else pathDir = addresNew.Text;
 
-            foreach (var format in typeFiles)
+            if (typeFiles.Count == 0)
+                System.Windows.Forms.MessageBox.Show("Вы не выбрали форматы файлов!", "Ошибка 1");
+            else
             {
-                string[] _files = Directory.GetFiles(addresOld.Text, format);
-                foreach (string _file in _files)
+                foreach (var format in typeFiles)
                 {
-                    string pathFale = pathDir + "\\" + _file.Substring(_file.LastIndexOf("\\")+2);
-                    File.Move(@_file, pathFale);
+                    string[] _files = Directory.GetFiles(addresOld.Text, format);
+                    foreach (string _file in _files)
+                    {
+                        string pathFale = pathDir + "\\" + _file.Substring(_file.LastIndexOf("\\") + 1);
+                        File.Move(@_file, pathFale);
+                    }
                 }
-            }   
+                System.Windows.Forms.MessageBox.Show("Вы переместили выбранные файлы по следующему пути: " + pathDir, "Перемещение!");
+            }
         }
     }
 }
