@@ -196,5 +196,111 @@ namespace Filer2
                 System.Windows.Forms.MessageBox.Show("Вы переместили выбранные файлы по следующему пути: " + pathDir, "Перемещение!");
             }
         }
+
+        //выбор всех форматов
+        private void btn_add_all_Click(object sender, RoutedEventArgs e)
+        {
+            check_ai.IsChecked = true;
+            check_bmp.IsChecked = true;
+            check_docx.IsChecked = true;
+            check_gif.IsChecked = true;
+            check_inx.IsChecked = true;
+            check_jpeg.IsChecked = true;
+            check_jpg.IsChecked = true;
+            check_mp4.IsChecked = true;
+            check_pdf.IsChecked = true;
+            check_png.IsChecked = true;
+            check_tiff.IsChecked = true;
+            check_torrent.IsChecked = true;
+            check_txt.IsChecked = true;
+            check_xlsx.IsChecked = true;
+        }
+
+        //отмена выбора всех форматов
+        private void btn_del_all_Click(object sender, RoutedEventArgs e)
+        {
+            check_ai.IsChecked = false;
+            check_bmp.IsChecked = false;
+            check_docx.IsChecked = false;
+            check_gif.IsChecked = false;
+            check_inx.IsChecked = false;
+            check_jpeg.IsChecked = false;
+            check_jpg.IsChecked = false;
+            check_mp4.IsChecked = false;
+            check_pdf.IsChecked = false;
+            check_png.IsChecked = false;
+            check_tiff.IsChecked = false;
+            check_torrent.IsChecked = false;
+            check_txt.IsChecked = false;
+            check_xlsx.IsChecked = false;
+        }
+
+        //выбор всех форматов изображений
+        private void btn_add_all_img_Click(object sender, RoutedEventArgs e)
+        {
+            check_ai.IsChecked = true;
+            check_bmp.IsChecked = true;
+            check_gif.IsChecked = true;
+            check_jpeg.IsChecked = true;
+            check_jpg.IsChecked = true;
+            check_png.IsChecked = true;
+            check_tiff.IsChecked = true;
+        }
+
+        //отмена выбора всех форматов изображений
+        private void btn_del_all_img_Click(object sender, RoutedEventArgs e)
+        {
+            check_ai.IsChecked = false;
+            check_bmp.IsChecked = false;
+            check_gif.IsChecked = false;
+            check_jpeg.IsChecked = false;
+            check_jpg.IsChecked = false;
+            check_png.IsChecked = false;
+            check_tiff.IsChecked = false;
+        }
+
+        //выбор всех форматов документов
+        private void btn_add_all_doc_Click(object sender, RoutedEventArgs e)
+        {
+            check_docx.IsChecked = true;
+            check_inx.IsChecked = true;
+            check_pdf.IsChecked = true;
+            check_txt.IsChecked = true;
+            check_xlsx.IsChecked = true;
+        }
+
+        //отмена выбора всех форматов документов
+        private void btn_del_all_doc_Click(object sender, RoutedEventArgs e)
+        {
+            check_docx.IsChecked = false;
+            check_inx.IsChecked = false;
+            check_pdf.IsChecked = false;
+            check_txt.IsChecked = false;
+            check_xlsx.IsChecked = false;
+        }
+
+        //выбор всех форматов видео
+        private void btn_add_all_video_Click(object sender, RoutedEventArgs e)
+        {
+            check_mp4.IsChecked = true;
+        }
+
+        //отмена выбора всех форматов видео
+        private void btn_del_all_video_Click(object sender, RoutedEventArgs e)
+        {
+            check_mp4.IsChecked = false;
+        }
+
+        //выбор всех форматов хлама
+        private void btn_add_all_inoe_Click(object sender, RoutedEventArgs e)
+        {
+            check_torrent.IsChecked = true;
+        }
+
+        //отмена выбора всех форматов хлама
+        private void btn_del_all_inoe_Click(object sender, RoutedEventArgs e)
+        {
+            check_torrent.IsChecked = false;
+        }
     }
 }

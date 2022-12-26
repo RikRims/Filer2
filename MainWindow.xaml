@@ -22,7 +22,15 @@
         <StackPanel Name="Files" Grid.Column="2" Grid.Row="0">
             <TreeView Height="371">
                 <TextBlock Text="Отметте галочкой форматы файлов, которые хотите удалить или переместить." Margin="15,10,5,5" TextWrapping="Wrap" Height="37" Width="339"/>
+                <StackPanel Name="btn_all" Orientation="Horizontal">
+                    <Button x:Name="btn_add_all" Content="Выбрать всё" Margin="0,10,10,5" ToolTip="Выбрать все файлы" Click="btn_add_all_Click"/>
+                    <Button x:Name="btn_del_all" Content="Отменить" Margin="0,10,0,5" ToolTip="Отменить выбор всех файлов" Click="btn_del_all_Click"/>
+                </StackPanel>
                 <TreeViewItem Header="Изображения">
+                    <StackPanel Name="btn_img" Orientation="Horizontal">
+                        <Button x:Name="btn_add_all_img" Content="Выбрать всё" Margin="0,10,10,5" ToolTip="Выбрать все файлы этой категории" Click="btn_add_all_img_Click"/>
+                        <Button x:Name="btn_del_all_img" Content="Отменить" Margin="0,10,0,5" ToolTip="Отменить выбор всех файлов этой категории" Click="btn_del_all_img_Click"/>
+                    </StackPanel>
                     <CheckBox x:Name="check_png" Margin="15,5,5,5" Content="*.png" Click="check_png_Click"/>
                     <CheckBox x:Name="check_jpg" Margin="15,5,5,5" Content="*.jpg" Click="check_jpg_Click"/>
                     <CheckBox x:Name="check_jpeg" Margin="15,5,5,5" Content="*.jpeg" Click="check_jpeg_Click"/>
@@ -32,6 +40,10 @@
                     <CheckBox x:Name="check_ai" Margin="15,5,5,5" Content="*.ai" Click="check_ai_Click"/>
                 </TreeViewItem>
                 <TreeViewItem Header="Документы">
+                    <StackPanel Name="btn_doc" Orientation="Horizontal">
+                        <Button x:Name="btn_add_all_doc" Content="Выбрать всё" Margin="0,10,10,5" ToolTip="Выбрать все файлы этой категории" Click="btn_add_all_doc_Click"/>
+                        <Button x:Name="btn_del_all_doc" Content="Отменить" Margin="0,10,0,5" ToolTip="Отменить выбор всех файлов этой категории" Click="btn_del_all_doc_Click"/>
+                    </StackPanel>
                     <CheckBox x:Name="check_txt" Margin="15,5,5,5" Content="*.txt" Click="check_txt_Click"/>
                     <CheckBox x:Name="check_docx" Margin="15,5,5,5" Content="*.docx" Click="check_docx_Click"/>
                     <CheckBox x:Name="check_xlsx" Margin="15,5,5,5" Content="*.xlsx" Click="check_xlsx_Click"/>
@@ -39,9 +51,17 @@
                     <CheckBox x:Name="check_inx" Margin="15,5,5,5" Content="*.inx" Click="check_inx_Click"/>
                 </TreeViewItem>
                 <TreeViewItem Header="Видео">
+                    <StackPanel Name="btn_video" Orientation="Horizontal">
+                        <Button x:Name="btn_add_all_video" Content="Выбрать всё" Margin="0,10,10,5" ToolTip="Выбрать все файлы этой категории" Click="btn_add_all_video_Click"/>
+                        <Button x:Name="btn_del_all_video" Content="Отменить" Margin="0,10,0,5" ToolTip="Отменить выбор всех файлов этой категории" Click="btn_del_all_video_Click"/>
+                    </StackPanel>
                     <CheckBox x:Name="check_mp4" Margin="15,5,5,5" Content="*.mp4" Click="check_mp4_Click"/>
                 </TreeViewItem>
                 <TreeViewItem Header="Другое">
+                    <StackPanel Name="btn_inoe" Orientation="Horizontal">
+                        <Button x:Name="btn_add_all_inoe" Content="Выбрать всё" Margin="0,10,10,5" ToolTip="Выбрать все файлы этой категории" Click="btn_add_all_inoe_Click"/>
+                        <Button x:Name="btn_del_all_inoe" Content="Отменить" Margin="0,10,0,5" ToolTip="Отменить выбор всех файлов этой категории" Click="btn_del_all_inoe_Click"/>
+                    </StackPanel>
                     <CheckBox x:Name="check_torrent" Margin="15,5,5,5" Content="*.torrent" Click="check_torrent_Click"/>
                 </TreeViewItem>
             </TreeView>
@@ -57,8 +77,11 @@
                 <TextBox x:Name="addresNew" Grid.Column="0" Grid.Row="0" Margin="15,5,5,5" Height="20" Width="300" IsEnabled="False"/>
                 <Button x:Name="btn_addres_new" Content="Выбрать" Margin="0,5,0,5" Click="btn_addres_new_Click" ToolTip="куда спрятать эти файлы?"/>
             </StackPanel>
-            <CheckBox x:Name="check_path" Content="Автоматически" Margin="15,10,5,5" IsChecked="True" Click="CheckBox_Checked" ToolTip="снять чтоб выбрать самостоятельно."/>
+            <StackPanel Orientation="Horizontal">
+                <CheckBox x:Name="check_path" Content="Автоматически" Margin="15,10,5,5" IsChecked="True" Click="CheckBox_Checked" Width="109"/>
+                <Image Source="/pngwing.com.png" Width="20" ToolTip="снять чтоб выбрать самостоятельно."  RenderTransformOrigin="-1.339,-0.589"/>
+            </StackPanel>
         </StackPanel>
-
+        
     </Grid>
 </Window>
