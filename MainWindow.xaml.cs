@@ -1,21 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Windows.Forms.VisualStyles;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace Filer2
@@ -164,7 +151,6 @@ namespace Filer2
                     }
                 }
             }
-
         }
 
         //перемещение файлов
@@ -178,10 +164,19 @@ namespace Filer2
                 Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Filer2" + "/" + nameDir.Substring(0, found));
                 pathDir = System.IO.Path.GetFullPath(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Filer2" + "/" + nameDir.Substring(0, found));
             }
-            else pathDir = addresNew.Text;
-
+            else //ошибка 2
+                if (addresNew.Text == "")
+                {
+                    System.Windows.Forms.MessageBox.Show("Вы не выбрали путь до хранилища!", "Ошибка 2");
+                    return;
+                }
+                else pathDir = addresNew.Text;
+            //ошибка 1
             if (typeFiles.Count == 0)
+            { 
                 System.Windows.Forms.MessageBox.Show("Вы не выбрали форматы файлов!", "Ошибка 1");
+                return;
+            }
             else
             {
                 foreach (var format in typeFiles)
@@ -201,106 +196,162 @@ namespace Filer2
         private void btn_add_all_Click(object sender, RoutedEventArgs e)
         {
             check_ai.IsChecked = true;
+            check_ai_Click(sender, e);
             check_bmp.IsChecked = true;
+            check_bmp_Click(sender, e);
             check_docx.IsChecked = true;
+            check_docx_Click(sender, e);
             check_gif.IsChecked = true;
+            check_gif_Click(sender, e);
             check_inx.IsChecked = true;
+            check_inx_Click(sender, e);
             check_jpeg.IsChecked = true;
+            check_jpeg_Click(sender, e);
             check_jpg.IsChecked = true;
+            check_jpg_Click(sender, e);
             check_mp4.IsChecked = true;
+            check_mp4_Click(sender, e);
             check_pdf.IsChecked = true;
+            check_pdf_Click(sender, e);
             check_png.IsChecked = true;
+            check_png_Click(sender, e);
             check_tiff.IsChecked = true;
+            check_tiff_Click(sender, e);
             check_torrent.IsChecked = true;
+            check_torrent_Click(sender, e);
             check_txt.IsChecked = true;
+            check_txt_Click(sender, e);
             check_xlsx.IsChecked = true;
+            check_xlsx_Click(sender, e);
         }
 
         //отмена выбора всех форматов
         private void btn_del_all_Click(object sender, RoutedEventArgs e)
         {
             check_ai.IsChecked = false;
+            check_ai_Click(sender, e);
             check_bmp.IsChecked = false;
+            check_bmp_Click(sender, e);
             check_docx.IsChecked = false;
+            check_docx_Click(sender, e);
             check_gif.IsChecked = false;
+            check_gif_Click(sender, e);
             check_inx.IsChecked = false;
+            check_inx_Click(sender, e);
             check_jpeg.IsChecked = false;
+            check_jpeg_Click(sender, e);
             check_jpg.IsChecked = false;
+            check_jpg_Click(sender, e);
             check_mp4.IsChecked = false;
+            check_mp4_Click(sender, e);
             check_pdf.IsChecked = false;
+            check_pdf_Click(sender, e);
             check_png.IsChecked = false;
+            check_png_Click(sender, e);
             check_tiff.IsChecked = false;
+            check_tiff_Click(sender, e);
             check_torrent.IsChecked = false;
+            check_torrent_Click(sender, e);
             check_txt.IsChecked = false;
+            check_txt_Click(sender, e);
             check_xlsx.IsChecked = false;
+            check_xlsx_Click(sender, e);
         }
 
         //выбор всех форматов изображений
         private void btn_add_all_img_Click(object sender, RoutedEventArgs e)
         {
             check_ai.IsChecked = true;
+            check_ai_Click(sender, e);
             check_bmp.IsChecked = true;
+            check_bmp_Click(sender, e);
             check_gif.IsChecked = true;
+            check_gif_Click(sender, e);
             check_jpeg.IsChecked = true;
+            check_jpeg_Click(sender, e);
             check_jpg.IsChecked = true;
+            check_jpg_Click(sender, e);
             check_png.IsChecked = true;
+            check_png_Click(sender, e);
             check_tiff.IsChecked = true;
+            check_tiff_Click(sender, e);
         }
 
         //отмена выбора всех форматов изображений
         private void btn_del_all_img_Click(object sender, RoutedEventArgs e)
         {
             check_ai.IsChecked = false;
+            check_ai_Click(sender, e);
             check_bmp.IsChecked = false;
+            check_bmp_Click(sender, e);
             check_gif.IsChecked = false;
+            check_gif_Click(sender, e);
             check_jpeg.IsChecked = false;
+            check_jpeg_Click(sender, e);
             check_jpg.IsChecked = false;
+            check_jpg_Click(sender, e);
             check_png.IsChecked = false;
+            check_png_Click(sender, e);
             check_tiff.IsChecked = false;
+            check_tiff_Click(sender, e);
         }
 
         //выбор всех форматов документов
         private void btn_add_all_doc_Click(object sender, RoutedEventArgs e)
         {
             check_docx.IsChecked = true;
+            check_docx_Click(sender, e);
             check_inx.IsChecked = true;
+            check_inx_Click(sender, e);
             check_pdf.IsChecked = true;
+            check_pdf_Click(sender, e);
             check_txt.IsChecked = true;
+            check_txt_Click(sender, e);
             check_xlsx.IsChecked = true;
+            check_xlsx_Click(sender, e);
         }
 
         //отмена выбора всех форматов документов
         private void btn_del_all_doc_Click(object sender, RoutedEventArgs e)
         {
             check_docx.IsChecked = false;
+            check_docx_Click(sender, e);
             check_inx.IsChecked = false;
+            check_inx_Click(sender, e);
             check_pdf.IsChecked = false;
+            check_pdf_Click(sender, e);
             check_txt.IsChecked = false;
+            check_txt_Click(sender, e);
             check_xlsx.IsChecked = false;
+            check_xlsx_Click(sender, e);
         }
 
         //выбор всех форматов видео
         private void btn_add_all_video_Click(object sender, RoutedEventArgs e)
         {
             check_mp4.IsChecked = true;
+            check_mp4_Click(sender, e);
         }
 
         //отмена выбора всех форматов видео
         private void btn_del_all_video_Click(object sender, RoutedEventArgs e)
         {
             check_mp4.IsChecked = false;
+            check_mp4_Click(sender, e);
         }
 
         //выбор всех форматов хлама
         private void btn_add_all_inoe_Click(object sender, RoutedEventArgs e)
         {
             check_torrent.IsChecked = true;
+            check_torrent_Click(sender, e);
         }
 
         //отмена выбора всех форматов хлама
         private void btn_del_all_inoe_Click(object sender, RoutedEventArgs e)
         {
             check_torrent.IsChecked = false;
+            check_torrent_Click(sender, e);
         }
     }
 }
