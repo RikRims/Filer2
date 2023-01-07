@@ -166,11 +166,11 @@ namespace Filer2
             }
             else //ошибка 2
                 if (addresNew.Text == "")
-                {
-                    System.Windows.Forms.MessageBox.Show("Вы не выбрали путь до хранилища!", "Ошибка 2");
-                    return;
-                }
-                else pathDir = addresNew.Text;
+            {
+                System.Windows.Forms.MessageBox.Show("Вы не выбрали путь до хранилища!", "Ошибка 2");
+                return;
+            }
+            else pathDir = addresNew.Text;
             //ошибка 1
             if (typeFiles.Count == 0)
             { 
