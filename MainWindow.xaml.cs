@@ -4,6 +4,8 @@ using System.IO;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using System.Windows;
 using System.Windows.Forms;
+using System.Drawing;
+using System.Text;
 
 namespace Filer2
 {
@@ -140,6 +142,15 @@ namespace Filer2
             DialogResult dialogResult = System.Windows.Forms.MessageBox.Show("Это действие удаляет файлы полностью (не в корзину!). Продолжить?", "Удаление!", MessageBoxButtons.OKCancel);
             if (dialogResult == System.Windows.Forms.DialogResult.OK)
             {
+                string nameDir = DateTime.Today.ToString();
+                int found = nameDir.IndexOf(" ");
+                string pathFile = System.IO.Path.GetFullPath(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Filer2" + "/log/" + $"{nameDir.Substring(0, found)}.txt");
+                using (StreamWriter log = File.Exists(pathFile) ? File.AppendText(pathFile) : File.CreateText(pathFile))
+                {
+                    string text = ($"{nameDir} --- Операция Удаления --- {typeFiles.Count} --- {check_path.IsChecked} --- {addresNew.Text}");
+                    log.WriteLine(text);
+                }
+
                 if (typeFiles.Count == 0)
                     System.Windows.Forms.MessageBox.Show("Вы не выбрали форматы файлов!", "Ошибка 1");
                 else foreach (var format in typeFiles)
@@ -157,10 +168,17 @@ namespace Filer2
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             string pathDir;
+            string nameDir = DateTime.Today.ToString();
+            int found = nameDir.IndexOf(" ");
+            string pathFile = System.IO.Path.GetFullPath(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Filer2" + "/log/" + $"{nameDir.Substring(0, found)}.txt");
+            using (StreamWriter log = File.Exists(pathFile) ? File.AppendText(pathFile) : File.CreateText(pathFile))
+            {
+                string text = ($"{nameDir} --- Операция Перемещения --- {typeFiles.Count} --- {check_path.IsChecked} --- {addresNew.Text}");
+                log.WriteLine(text);
+            }
+
             if (check_path.IsChecked == true)
             {
-                string nameDir = DateTime.Today.ToString();
-                int found = nameDir.IndexOf(" ");
                 Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Filer2" + "/" + nameDir.Substring(0, found));
                 pathDir = System.IO.Path.GetFullPath(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Filer2" + "/" + nameDir.Substring(0, found));
             }
