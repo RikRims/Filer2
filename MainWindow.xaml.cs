@@ -4,8 +4,7 @@ using System.IO;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using System.Windows;
 using System.Windows.Forms;
-using System.Drawing;
-using System.Text;
+using System.Reflection;
 
 namespace Filer2
 {
@@ -144,11 +143,16 @@ namespace Filer2
             DialogResult dialogResult = System.Windows.Forms.MessageBox.Show("Это действие удаляет файлы полностью (не в корзину!). Продолжить?", "Удаление!", MessageBoxButtons.OKCancel);
             if (dialogResult == System.Windows.Forms.DialogResult.OK)
             {
-                string[] _files = Directory.GetFiles(addresOld.Text, format);
-                foreach (string _file in _files)
-                {
-                    File.Delete(_file);
-                }
+                if (typeFiles.Count == 0)
+                    System.Windows.Forms.MessageBox.Show("Вы не выбрали форматы файлов!", "Ошибка 1");
+                else foreach (var format in typeFiles)
+                    {
+                        string[] _files = Directory.GetFiles(addresOld.Text, format);
+                        foreach (string _file in _files)
+                        {
+                            File.Delete(_file);
+                        }
+                    }
             }
         }
 
