@@ -16,6 +16,8 @@ namespace Filer2
         public MainWindow()
         {
             InitializeComponent();
+            Version version = Assembly.GetExecutingAssembly().GetName().Version;
+            textBloclVersion.Text = Convert.ToString(version);
             addresOld.Text = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
         }
 
@@ -142,24 +144,10 @@ namespace Filer2
             DialogResult dialogResult = System.Windows.Forms.MessageBox.Show("Это действие удаляет файлы полностью (не в корзину!). Продолжить?", "Удаление!", MessageBoxButtons.OKCancel);
             if (dialogResult == System.Windows.Forms.DialogResult.OK)
             {
-                string nameDir = DateTime.Today.ToString();
-                int found = nameDir.IndexOf(" ");
-                string pathFile = System.IO.Path.GetFullPath(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Filer2" + "/log/" + $"{nameDir.Substring(0, found)}.txt");
-                using (StreamWriter log = File.Exists(pathFile) ? File.AppendText(pathFile) : File.CreateText(pathFile))
+                string[] _files = Directory.GetFiles(addresOld.Text, format);
+                foreach (string _file in _files)
                 {
-                    string text = ($"{nameDir} --- Операция Удаления --- {typeFiles.Count} --- {check_path.IsChecked} --- {addresNew.Text}");
-                    log.WriteLine(text);
-                }
-
-                if (typeFiles.Count == 0)
-                    System.Windows.Forms.MessageBox.Show("Вы не выбрали форматы файлов!", "Ошибка 1");
-                else foreach (var format in typeFiles)
-                {
-                    string[] _files = Directory.GetFiles(addresOld.Text, format);
-                    foreach (string _file in _files)
-                    {
-                        File.Delete(_file);
-                    }
+                    File.Delete(_file);
                 }
             }
         }

@@ -3,11 +3,29 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Filer2"
-        mc:Ignorable="d" Height="450" Width="800" ResizeMode="NoResize" WindowState="Minimized">
+        mc:Ignorable="d"
+        Title="Filer2" Height="450" Width="800" ResizeMode="NoResize">
+    <Window.Resources>
+        <Style TargetType="CheckBox">
+            <Setter Property="Margin" Value="10,5,0,0"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="0,5,5,5"/>
+            <Setter Property="Padding" Value="10,5"/>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="10,5,0,0"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="10,5,5,5"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Width" Value="300"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="6*"/>
+            <RowDefinition Height="7*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -82,6 +100,9 @@
                 <Image Source="/pngwing.com.png" Width="20" ToolTip="снять чтоб выбрать самостоятельно."  RenderTransformOrigin="-1.339,-0.589"/>
             </StackPanel>
         </StackPanel>
-        <TextBlock Text="V 2.2.2" Grid.Row="1" VerticalAlignment="Center" Margin="15"/>
+        <TextBlock Name="textBloclVersion"
+                   Grid.Row="1"
+                   d:Text="Test"
+                   VerticalAlignment="Center"/>
     </Grid>
 </Window>
