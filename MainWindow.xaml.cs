@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using System.Windows;
-using System.Windows.Forms;
 using System.Reflection;
+using System.Windows.Controls;
+using System.Windows.Forms;
+using System.Linq;
 
 namespace Filer2
 {
@@ -15,8 +17,12 @@ namespace Filer2
         public MainWindow()
         {
             InitializeComponent();
+
+            //зщаписываем номер версии программы в угол
             Version version = Assembly.GetExecutingAssembly().GetName().Version;
             textBloclVersion.Text = Convert.ToString(version);
+
+            //по дефолту выбирается рабочий стол как рабочая область
             addresOld.Text = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
         }
 
@@ -53,10 +59,7 @@ namespace Filer2
             }
         }
 
-
-        /// <summary>
         /// добавление форматов в List
-        /// </summary>
         private void addFiles(string TF, bool? check)
         {
             if (check == true && !typeFiles.Contains(TF))
@@ -64,81 +67,7 @@ namespace Filer2
             else typeFiles.Remove(TF);
         }
 
-        private void check_txt_Click(object sender, RoutedEventArgs e)
-        {
-            addFiles((string)check_txt.Content, check_txt.IsChecked);
-        }
-
-        private void check_png_Click(object sender, RoutedEventArgs e)
-        {
-            addFiles((string)check_png.Content, check_png.IsChecked);
-        }
-
-        private void check_jpg_Click(object sender, RoutedEventArgs e)
-        {
-            addFiles((string)check_jpg.Content, check_jpg.IsChecked);
-        }
-
-        private void check_jpeg_Click(object sender, RoutedEventArgs e)
-        {
-            addFiles((string)check_jpeg.Content, check_jpeg.IsChecked);
-        }
-
-        private void check_docx_Click(object sender, RoutedEventArgs e)
-        {
-            addFiles((string)check_docx.Content, check_docx.IsChecked);
-        }
-
-        private void check_xlsx_Click(object sender, RoutedEventArgs e)
-        {
-            addFiles((string)check_xlsx.Content, check_xlsx.IsChecked);
-        }
-
-        private void check_pdf_Click(object sender, RoutedEventArgs e)
-        {
-            addFiles((string)check_pdf.Content, check_pdf.IsChecked);
-        }
-
-        private void check_bmp_Click(object sender, RoutedEventArgs e)
-        {
-            addFiles((string)check_bmp.Content, check_bmp.IsChecked);
-        }
-
-        private void check_gif_Click(object sender, RoutedEventArgs e)
-        {
-            addFiles((string)check_gif.Content, check_gif.IsChecked);
-        }
-
-        private void check_tiff_Click(object sender, RoutedEventArgs e)
-        {
-            addFiles((string)check_tiff.Content, check_tiff.IsChecked);
-        }
-
-        private void check_inx_Click(object sender, RoutedEventArgs e)
-        {
-            addFiles((string)check_inx.Content, check_inx.IsChecked);
-        }
-
-        private void check_torrent_Click(object sender, RoutedEventArgs e)
-        {
-            addFiles((string)check_torrent.Content, check_torrent.IsChecked);
-        }
-
-        private void check_ai_Click(object sender, RoutedEventArgs e)
-        {
-            addFiles((string)check_ai.Content, check_ai.IsChecked);
-        }
-
-        private void check_mp4_Click(object sender, RoutedEventArgs e)
-        {
-            addFiles((string)check_mp4.Content, check_mp4.IsChecked);
-        }
-        /// <summary>
-        /// конец добавления форматов
-        /// </summary>
-
-        //удаление файлов
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void DeleteFile(object sender, RoutedEventArgs e)
         {
             DialogResult dialogResult = System.Windows.Forms.MessageBox.Show("Это действие удаляет файлы полностью (не в корзину!). Продолжить?", "Удаление!", MessageBoxButtons.OKCancel);
             if (dialogResult == System.Windows.Forms.DialogResult.OK)
@@ -146,18 +75,18 @@ namespace Filer2
                 if (typeFiles.Count == 0)
                     System.Windows.Forms.MessageBox.Show("Вы не выбрали форматы файлов!", "Ошибка 1");
                 else foreach (var format in typeFiles)
+                {
+                    string[] _files = Directory.GetFiles(addresOld.Text, format);
+                    foreach (string _file in _files)
                     {
-                        string[] _files = Directory.GetFiles(addresOld.Text, format);
-                        foreach (string _file in _files)
-                        {
-                            File.Delete(_file);
-                        }
+                        File.Delete(_file);
                     }
+                }
             }
         }
 
         //перемещение файлов
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void FailMowe(object sender, RoutedEventArgs e)
         {
             string pathDir;
             string nameDir = DateTime.Today.ToString();
@@ -202,166 +131,26 @@ namespace Filer2
             }
         }
 
-        //выбор всех форматов
-        private void btn_add_all_Click(object sender, RoutedEventArgs e)
+        //сканировать рабочую область и создать чекбоксы соответствующие файлам
+        private void ScanWorkPath(object sender, RoutedEventArgs e)
         {
-            check_ai.IsChecked = true;
-            check_ai_Click(sender, e);
-            check_bmp.IsChecked = true;
-            check_bmp_Click(sender, e);
-            check_docx.IsChecked = true;
-            check_docx_Click(sender, e);
-            check_gif.IsChecked = true;
-            check_gif_Click(sender, e);
-            check_inx.IsChecked = true;
-            check_inx_Click(sender, e);
-            check_jpeg.IsChecked = true;
-            check_jpeg_Click(sender, e);
-            check_jpg.IsChecked = true;
-            check_jpg_Click(sender, e);
-            check_mp4.IsChecked = true;
-            check_mp4_Click(sender, e);
-            check_pdf.IsChecked = true;
-            check_pdf_Click(sender, e);
-            check_png.IsChecked = true;
-            check_png_Click(sender, e);
-            check_tiff.IsChecked = true;
-            check_tiff_Click(sender, e);
-            check_torrent.IsChecked = true;
-            check_torrent_Click(sender, e);
-            check_txt.IsChecked = true;
-            check_txt_Click(sender, e);
-            check_xlsx.IsChecked = true;
-            check_xlsx_Click(sender, e);
-        }
+            CheckBoxConteiner.Children.Clear();
+            List<string> nameCheckBox = new List<string>();
 
-        //отмена выбора всех форматов
-        private void btn_del_all_Click(object sender, RoutedEventArgs e)
-        {
-            check_ai.IsChecked = false;
-            check_ai_Click(sender, e);
-            check_bmp.IsChecked = false;
-            check_bmp_Click(sender, e);
-            check_docx.IsChecked = false;
-            check_docx_Click(sender, e);
-            check_gif.IsChecked = false;
-            check_gif_Click(sender, e);
-            check_inx.IsChecked = false;
-            check_inx_Click(sender, e);
-            check_jpeg.IsChecked = false;
-            check_jpeg_Click(sender, e);
-            check_jpg.IsChecked = false;
-            check_jpg_Click(sender, e);
-            check_mp4.IsChecked = false;
-            check_mp4_Click(sender, e);
-            check_pdf.IsChecked = false;
-            check_pdf_Click(sender, e);
-            check_png.IsChecked = false;
-            check_png_Click(sender, e);
-            check_tiff.IsChecked = false;
-            check_tiff_Click(sender, e);
-            check_torrent.IsChecked = false;
-            check_torrent_Click(sender, e);
-            check_txt.IsChecked = false;
-            check_txt_Click(sender, e);
-            check_xlsx.IsChecked = false;
-            check_xlsx_Click(sender, e);
-        }
+            string[] _files = Directory.GetFiles(addresOld.Text);
+            foreach (string _file in _files)
+            {
+                int begin = _file.LastIndexOf(".");
+                nameCheckBox.Add(_file.Substring(begin));
+            }
 
-        //выбор всех форматов изображений
-        private void btn_add_all_img_Click(object sender, RoutedEventArgs e)
-        {
-            check_ai.IsChecked = true;
-            check_ai_Click(sender, e);
-            check_bmp.IsChecked = true;
-            check_bmp_Click(sender, e);
-            check_gif.IsChecked = true;
-            check_gif_Click(sender, e);
-            check_jpeg.IsChecked = true;
-            check_jpeg_Click(sender, e);
-            check_jpg.IsChecked = true;
-            check_jpg_Click(sender, e);
-            check_png.IsChecked = true;
-            check_png_Click(sender, e);
-            check_tiff.IsChecked = true;
-            check_tiff_Click(sender, e);
-        }
-
-        //отмена выбора всех форматов изображений
-        private void btn_del_all_img_Click(object sender, RoutedEventArgs e)
-        {
-            check_ai.IsChecked = false;
-            check_ai_Click(sender, e);
-            check_bmp.IsChecked = false;
-            check_bmp_Click(sender, e);
-            check_gif.IsChecked = false;
-            check_gif_Click(sender, e);
-            check_jpeg.IsChecked = false;
-            check_jpeg_Click(sender, e);
-            check_jpg.IsChecked = false;
-            check_jpg_Click(sender, e);
-            check_png.IsChecked = false;
-            check_png_Click(sender, e);
-            check_tiff.IsChecked = false;
-            check_tiff_Click(sender, e);
-        }
-
-        //выбор всех форматов документов
-        private void btn_add_all_doc_Click(object sender, RoutedEventArgs e)
-        {
-            check_docx.IsChecked = true;
-            check_docx_Click(sender, e);
-            check_inx.IsChecked = true;
-            check_inx_Click(sender, e);
-            check_pdf.IsChecked = true;
-            check_pdf_Click(sender, e);
-            check_txt.IsChecked = true;
-            check_txt_Click(sender, e);
-            check_xlsx.IsChecked = true;
-            check_xlsx_Click(sender, e);
-        }
-
-        //отмена выбора всех форматов документов
-        private void btn_del_all_doc_Click(object sender, RoutedEventArgs e)
-        {
-            check_docx.IsChecked = false;
-            check_docx_Click(sender, e);
-            check_inx.IsChecked = false;
-            check_inx_Click(sender, e);
-            check_pdf.IsChecked = false;
-            check_pdf_Click(sender, e);
-            check_txt.IsChecked = false;
-            check_txt_Click(sender, e);
-            check_xlsx.IsChecked = false;
-            check_xlsx_Click(sender, e);
-        }
-
-        //выбор всех форматов видео
-        private void btn_add_all_video_Click(object sender, RoutedEventArgs e)
-        {
-            check_mp4.IsChecked = true;
-            check_mp4_Click(sender, e);
-        }
-
-        //отмена выбора всех форматов видео
-        private void btn_del_all_video_Click(object sender, RoutedEventArgs e)
-        {
-            check_mp4.IsChecked = false;
-            check_mp4_Click(sender, e);
-        }
-
-        //выбор всех форматов хлама
-        private void btn_add_all_inoe_Click(object sender, RoutedEventArgs e)
-        {
-            check_torrent.IsChecked = true;
-            check_torrent_Click(sender, e);
-        }
-
-        //отмена выбора всех форматов хлама
-        private void btn_del_all_inoe_Click(object sender, RoutedEventArgs e)
-        {
-            check_torrent.IsChecked = false;
-            check_torrent_Click(sender, e);
+            IEnumerable<string> distinctNameCheckBox = nameCheckBox.Distinct();
+            foreach (string _file in distinctNameCheckBox)
+            {
+                System.Windows.Controls.CheckBox checkBox = new();
+                checkBox.Content = _file;
+                CheckBoxConteiner.Children.Add(checkBox);
+            }
         }
     }
 }
