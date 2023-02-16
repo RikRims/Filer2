@@ -4,9 +4,9 @@ using System.IO;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using System.Windows;
 using System.Reflection;
-using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Linq;
+using CheckBox = System.Windows.Controls.CheckBox;
 
 namespace Filer2
 {
@@ -35,7 +35,7 @@ namespace Filer2
         }
 
         //выбор папки с файлами
-        private void btn_addres_old_Click(object sender, RoutedEventArgs e)
+        private void Btn_addres_old_Click(object sender, RoutedEventArgs e)
         {
             CommonOpenFileDialog dialog = new CommonOpenFileDialog();
             dialog.InitialDirectory = "C:";
@@ -47,7 +47,7 @@ namespace Filer2
         }
 
         //выбор конечной папки для перемещения файлов
-        private void btn_addres_new_Click(object sender, RoutedEventArgs e)
+        private void Btn_addres_new_Click(object sender, RoutedEventArgs e)
         {
             CommonOpenFileDialog dialog = new CommonOpenFileDialog();
             dialog.InitialDirectory = "C:";
@@ -59,12 +59,15 @@ namespace Filer2
             }
         }
 
-        /// добавление форматов в List
-        private void addFiles(string TF, bool? check)
+        /// добавление форматов в List                                                                   
+        private void AddFiles(object sender, RoutedEventArgs e)
         {
-            if (check == true && !typeFiles.Contains(TF))
-                typeFiles.Add(TF);
-            else typeFiles.Remove(TF);
+            var chbox = sender as CheckBox;
+            if (((bool)chbox.IsChecked) && (!typeFiles.Contains(chbox.Content)))
+            {
+                typeFiles.Add((string)chbox.Content);
+            }
+            else typeFiles.Remove((string)chbox.Content);
         }
 
         private void DeleteFile(object sender, RoutedEventArgs e)
@@ -132,7 +135,7 @@ namespace Filer2
         }
 
         //сканировать рабочую область и создать чекбоксы соответствующие файлам
-        private void ScanWorkPath(object sender, RoutedEventArgs e)
+        private void ScanWorkPath(object sender, RoutedEventArgs e)                                           
         {
             CheckBoxConteiner.Children.Clear();
             List<string> nameCheckBox = new List<string>();
@@ -141,7 +144,7 @@ namespace Filer2
             foreach (string _file in _files)
             {
                 int begin = _file.LastIndexOf(".");
-                nameCheckBox.Add(_file.Substring(begin));
+                nameCheckBox.Add(_file[begin..]);
             }
 
             IEnumerable<string> distinctNameCheckBox = nameCheckBox.Distinct();
@@ -149,6 +152,7 @@ namespace Filer2
             {
                 System.Windows.Controls.CheckBox checkBox = new();
                 checkBox.Content = _file;
+                checkBox.Click += AddFiles;
                 CheckBoxConteiner.Children.Add(checkBox);
             }
         }

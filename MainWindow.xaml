@@ -74,8 +74,7 @@
                     Grid.Column="2"
                     Grid.Row="0">
 
-            <TextBlock Text="Отметте галочкой форматы файлов, 
-                           которые хотите удалить или переместить."
+            <TextBlock Text="Отметте галочкой форматы файлов, которые хотите удалить или переместить."
                        Width="339"
                        TextWrapping="Wrap"/>
 
@@ -113,7 +112,7 @@
                 <Button x:Name="btn_addres_old" 
                         Content="Выбрать"
                         HorizontalAlignment="Right"
-                        Click="btn_addres_old_Click" 
+                        Click="Btn_addres_old_Click" 
                         ToolTip="путь к файлам с которыми будем работать"
                         BorderThickness="0,0,0,0"/>
             </Grid>
@@ -130,7 +129,7 @@
                 <Button x:Name="btn_addres_new" 
                         Content="Выбрать" 
                         HorizontalAlignment="Right"
-                        Click="btn_addres_new_Click" 
+                        Click="Btn_addres_new_Click" 
                         ToolTip="куда спрятать эти файлы?"  
                         BorderThickness="0,0,0,0"/>
                 
