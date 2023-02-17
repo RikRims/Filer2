@@ -84,6 +84,7 @@ namespace Filer2
                 TypeFiles.Remove((string)chbox.Content);
         }
 
+        //удаление файлов
         private void DeleteFile(object sender, RoutedEventArgs e)
         {
             if (TypeFiles.Count == 0)
@@ -112,7 +113,6 @@ namespace Filer2
                         foreach (string _file in _files)
                         {
                             FileSystem.DeleteFile(@_file, UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin);
-                            //File.Move(@_file, Environment.GetFolderPath(Environment.SpecialFolder.);
                         }
                     }
                 }
