@@ -75,7 +75,7 @@ namespace Filer2
                 if(typeFiles.Count == 0)
                     System.Windows.Forms.MessageBox.Show("Вы не выбрали форматы файлов!", "Ошибка 1");
                 else
-                    foreach(var format in typeFiles)
+                    foreach(string format in typeFiles)
                     {
                         string[] _files = Directory.GetFiles(addresOld.Text, format);
                         foreach(string _file in _files)
@@ -132,13 +132,14 @@ namespace Filer2
         private void ScanWorkPath(object sender, RoutedEventArgs e)
         {
             CheckBoxConteiner.Children.Clear();
+            typeFiles.Clear();
             List<string> nameCheckBox = new();
 
             string[] _files = Directory.GetFiles(addresOld.Text);
             foreach(string _file in _files)
             {
                 int begin = _file.LastIndexOf(".");
-                nameCheckBox.Add(_file[begin..]);
+                nameCheckBox.Add($"*{_file[begin..]}");
             }
 
             IEnumerable<string> distinctNameCheckBox = nameCheckBox.Distinct();
