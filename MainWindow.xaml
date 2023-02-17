@@ -64,7 +64,7 @@
                     BorderThickness="0,0,0,0" />
             <Button Content="Удалить"
                     Click="DeleteFile"
-                    ToolTip="Удаление происходит с концами."
+                    ToolTip="Удаление может происходить с концами."
                     BorderThickness="0,0,0,0" />
         </StackPanel>
         <StackPanel Name="Files"
