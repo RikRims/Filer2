@@ -111,8 +111,6 @@
                         ToolTip="куда спрятать эти файлы?"
                         BorderThickness="0,0,0,0" />
             </Grid>
-            <TextBlock x:Name="console"
-                       Height="269" />
         </StackPanel>
         <TextBlock Name="textBloclVersion"
                    Grid.Row="1"
