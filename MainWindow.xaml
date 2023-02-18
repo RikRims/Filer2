@@ -78,11 +78,13 @@
                 <Button x:Name="btn_add_all"
                         Content="Выбрать всё"
                         ToolTip="Выбрать все файлы"
-                        BorderThickness="0,0,0,0" />
+                        BorderThickness="0,0,0,0"
+                        Click="SelectAll" />
                 <Button x:Name="btn_del_all"
                         Content="Отменить"
                         ToolTip="Отменить выбор всех файлов"
-                        BorderThickness="0,0,0,0" />
+                        BorderThickness="0,0,0,0"
+                        Click="SelectAll" />
             </StackPanel>
             <StackPanel x:Name="CheckBoxConteiner" />
         </StackPanel>

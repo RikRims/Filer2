@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.Linq;
 using CheckBox = System.Windows.Controls.CheckBox;
 using Microsoft.VisualBasic.FileIO;
+using System.Windows.Controls;
 
 namespace Filer2
 {
@@ -46,37 +47,37 @@ namespace Filer2
         //выбор папки с файлами
         private void Btn_addres_old_Click(object sender, RoutedEventArgs e)
         {
-            CommonOpenFileDialog dialog = new()
-            {
-                InitialDirectory = "C:",
-                IsFolderPicker = true
-            };
-            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
-            {
-                addresOld.Text = dialog.FileName;
-            }
+            var obj = this.addresOld;
+            SelectDyrectory(obj);
         }
 
         //выбор конечной папки для перемещения файлов
         private void Btn_addres_new_Click(object sender, RoutedEventArgs e)
         {
+            var obj = this.addresNew;
+            SelectDyrectory(obj);
+            Directory.CreateDirectory($"{addresNew.Text}\\logs");
+        }
+
+        private static void SelectDyrectory(TextBlock laeble)
+        {
             CommonOpenFileDialog dialog = new()
             {
                 InitialDirectory = "C:",
                 IsFolderPicker = true
             };
-            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+            if(dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                addresNew.Text = dialog.FileName;
-                Directory.CreateDirectory($"{addresNew.Text}\\logs");
+                laeble.Text = dialog.FileName;
             }
         }
+
 
         /// добавление форматов в List                                                                   
         private void AddFiles(object sender, RoutedEventArgs e)
         {
             var chbox = sender as CheckBox;
-            if (((bool)chbox.IsChecked) && (!TypeFiles.Contains(chbox.Content)))
+            if(((bool)chbox.IsChecked) && (!TypeFiles.Contains(chbox.Content)))
             {
                 TypeFiles.Add((string)chbox.Content);
             }
@@ -87,19 +88,19 @@ namespace Filer2
         //удаление файлов
         private void DeleteFile(object sender, RoutedEventArgs e)
         {
-            if (TypeFiles.Count == 0)
+            if(TypeFiles.Count == 0)
                 System.Windows.Forms.MessageBox.Show("Вы не выбрали форматы файлов!", "Ошибка 1");
             else
             {
                 DialogResult dialogResult = System.Windows.Forms.MessageBox.Show(
                     "Удалить файлы полностью?",
                     "Удаление!", MessageBoxButtons.YesNo);
-                if (dialogResult == System.Windows.Forms.DialogResult.Yes)
+                if(dialogResult == System.Windows.Forms.DialogResult.Yes)
 
-                    foreach (string format in TypeFiles)
+                    foreach(string format in TypeFiles)
                     {
                         string[] _files = Directory.GetFiles(addresOld.Text, format);
-                        foreach (string _file in _files)
+                        foreach(string _file in _files)
                         {
                             File.Delete(_file);
                         }
@@ -107,10 +108,10 @@ namespace Filer2
 
                 else
                 {
-                    foreach (string format in TypeFiles)
+                    foreach(string format in TypeFiles)
                     {
                         string[] _files = Directory.GetFiles(addresOld.Text, format);
-                        foreach (string _file in _files)
+                        foreach(string _file in _files)
                         {
                             FileSystem.DeleteFile(@_file, UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin);
                         }
@@ -123,31 +124,31 @@ namespace Filer2
         private void FailMowe(object sender, RoutedEventArgs e)
         {
             string pathFile = Path.GetFullPath($"{addresNew.Text}/logs/{nameDir}.txt");
-            using (StreamWriter log = File.Exists(pathFile) ? File.AppendText(pathFile) : File.CreateText(pathFile))
+            using(StreamWriter log = File.Exists(pathFile) ? File.AppendText(pathFile) : File.CreateText(pathFile))
             {
                 string text = $"{nameDir} --- Операция Перемещения --- {TypeFiles.Count} --- {addresNew.Text}";
                 log.WriteLine(text);
             }
 
             //ошибка 2
-            if (addresNew.Text == "")
+            if(addresNew.Text == "")
             {
                 System.Windows.Forms.MessageBox.Show("Вы не выбрали путь до хранилища!", "Ошибка 2");
                 return;
             }
 
             //ошибка 1
-            else if (TypeFiles.Count == 0)
+            else if(TypeFiles.Count == 0)
             {
                 System.Windows.Forms.MessageBox.Show("Вы не выбрали форматы файлов!", "Ошибка 1");
                 return;
             }
             else
             {
-                foreach (var format in TypeFiles)
+                foreach(var format in TypeFiles)
                 {
                     string[] _files = Directory.GetFiles(addresOld.Text, format);
-                    foreach (string _file in _files)
+                    foreach(string _file in _files)
                     {
                         string pathFale = addresNew.Text + "\\" + _file[(_file.LastIndexOf("\\") + 1)..];
                         File.Move(@_file, pathFale);
@@ -165,22 +166,22 @@ namespace Filer2
             List<string> nameCheckBox = new();
 
             string[] _files = Directory.GetFiles(addresOld.Text);
-            foreach (string _file in _files)
+            foreach(string _file in _files)
             {
                 int begin = _file.LastIndexOf(".");
                 nameCheckBox.Add($"*{_file[begin..]}");
             }
             nameCheckBox = nameCheckBox.Distinct().ToList();
 
-            foreach (string bf in BlockFormat)
+            foreach(string bf in BlockFormat)
             {
-                if (nameCheckBox.Contains(bf))
+                if(nameCheckBox.Contains(bf))
                 {
                     nameCheckBox.Remove(bf);
                 };
             }
 
-            foreach (string _file in nameCheckBox)
+            foreach(string _file in nameCheckBox)
             {
                 CheckBox checkBox = new()
                 {
@@ -188,6 +189,18 @@ namespace Filer2
                 };
                 checkBox.Click += AddFiles;
                 CheckBoxConteiner.Children.Add(checkBox);
+            }
+        }
+
+        //выбрать все чекбоксы
+        protected internal void SelectAll(object sender, RoutedEventArgs e)
+        {
+            UIElementCollection checkBoxes = CheckBoxConteiner.Children;
+            foreach(UIElement element in checkBoxes)
+            {
+                var obj = (element as CheckBox);
+                obj.IsChecked = !obj.IsChecked;
+                AddFiles(obj, null);
             }
         }
     }
