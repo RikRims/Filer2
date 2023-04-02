@@ -36,14 +36,6 @@
     <None Remove="Assets\icons\icons_V1.png" />
     <None Remove="Assets\icons\icons_V2.png" />
     <None Remove="Assets\icons\icons_V3.png" />
-    <None Remove="View\Ikons\Docs_all.png" />
-    <None Remove="View\Ikons\Docs_black.png" />
-    <None Remove="View\Ikons\Docs_white.png" />
-    <None Remove="View\Ikons\icons8-каталог-64 %284%29.png" />
-    <None Remove="View\Ikons\icons8-каталог-64.png" />
-    <None Remove="View\Ikons\icons_V1.png" />
-    <None Remove="View\Ikons\icons_V2.png" />
-    <None Remove="View\Ikons\icons_V3.png" />
   </ItemGroup>
   
   <ItemGroup>
