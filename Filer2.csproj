@@ -8,9 +8,7 @@
     <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
     <StartupObject>Filer2.App</StartupObject>
     <Authors>$(Name)</Authors>
-    <AssemblyVersion>
-      1.0.1.3
-    </AssemblyVersion>
+    <AssemblyVersion>1.0.1.3</AssemblyVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -30,7 +28,50 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="View\Ikons\Docs_all.png" />
+    <None Remove="View\Ikons\Docs_black.png" />
+    <None Remove="View\Ikons\Docs_white.png" />
+    <None Remove="View\Ikons\icons8-каталог-64 %284%29.png" />
+    <None Remove="View\Ikons\icons8-каталог-64.png" />
+    <None Remove="View\Ikons\icons_V1.png" />
+    <None Remove="View\Ikons\icons_V2.png" />
+    <None Remove="View\Ikons\icons_V3.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="WindowsAPICodePack" Version="7.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ViewModel\" />
+    <Folder Include="Model\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="View\Ikons\Docs_all.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\Ikons\Docs_black.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\Ikons\Docs_white.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\Ikons\icons8-каталог-64 (4).png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\Ikons\icons8-каталог-64.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\Ikons\icons_V1.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\Ikons\icons_V2.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\Ikons\icons_V3.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>
