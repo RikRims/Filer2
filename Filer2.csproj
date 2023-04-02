@@ -28,7 +28,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-<<<<<<< HEAD
+    <None Remove="Assets\icons\Docs_all.png" />
+    <None Remove="Assets\icons\Docs_black.png" />
+    <None Remove="Assets\icons\Docs_white.png" />
+    <None Remove="Assets\icons\icons8-каталог-64 %284%29.png" />
+    <None Remove="Assets\icons\icons8-каталог-64.png" />
+    <None Remove="Assets\icons\icons_V1.png" />
+    <None Remove="Assets\icons\icons_V2.png" />
+    <None Remove="Assets\icons\icons_V3.png" />
     <None Remove="View\Ikons\Docs_all.png" />
     <None Remove="View\Ikons\Docs_black.png" />
     <None Remove="View\Ikons\Docs_white.png" />
@@ -37,51 +44,19 @@
     <None Remove="View\Ikons\icons_V1.png" />
     <None Remove="View\Ikons\icons_V2.png" />
     <None Remove="View\Ikons\icons_V3.png" />
-=======
-    <None Remove="View\Windows\icons_V1.png" />
->>>>>>> MVVM Pattern
   </ItemGroup>
-
+  
   <ItemGroup>
     <PackageReference Include="WindowsAPICodePack" Version="7.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-<<<<<<< HEAD
     <Folder Include="ViewModel\" />
-=======
     <Folder Include="Core\Services\" />
->>>>>>> MVVM Pattern
     <Folder Include="Model\" />
   </ItemGroup>
 
   <ItemGroup>
-<<<<<<< HEAD
-    <Resource Include="View\Ikons\Docs_all.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="View\Ikons\Docs_black.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="View\Ikons\Docs_white.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="View\Ikons\icons8-каталог-64 (4).png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="View\Ikons\icons8-каталог-64.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="View\Ikons\icons_V1.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="View\Ikons\icons_V2.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="View\Ikons\icons_V3.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-=======
     <Resource Include="Assets\icons\Docs_all.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
@@ -91,7 +66,7 @@
     <Resource Include="Assets\icons\Docs_white.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Assets\icons\icons8-каталог-64 %284%29.png">
+    <Resource Include="Assets\icons\icons8-каталог-64 (4).png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\icons\icons8-каталог-64.png">
@@ -106,8 +81,6 @@
     <Resource Include="Assets\icons\icons_V3.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="View\Windows\icons_V1.png" />
->>>>>>> MVVM Pattern
   </ItemGroup>
 
 </Project>

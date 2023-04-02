@@ -8,11 +8,7 @@
         Height="450"
         Width="800"
         ResizeMode="NoResize"
-<<<<<<< HEAD:View/MainWindow.xaml
-        Icon="/View/Ikons/icons_V1.png">
-=======
-        Icon="/View/Windows/icons_V1.png">
->>>>>>> MVVM Pattern:View/Windows/MainWindow.xaml
+        Icon="/Assets/icons/icons_V1.png">
     <Window.Resources>
         <Style TargetType="CheckBox">
             <Setter Property="Margin"
