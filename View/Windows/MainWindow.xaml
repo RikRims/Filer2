@@ -5,10 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="Filer2"
-        Height="450"
-        Width="800"
-        ResizeMode="NoResize"
-        Icon="/Assets/icons/icons_V1.png">
+        Height="580"
+        Width="930"
+        x:Name="Filer2"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True">
     <Window.Resources>
         <Style TargetType="CheckBox">
             <Setter Property="Margin"
@@ -36,7 +39,9 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <Grid.RowDefinitions>
+        <Border Background="#ecf0f1"
+                CornerRadius="10" />
+        <!--   <Grid.RowDefinitions>
             <RowDefinition Height="7*" />
             <RowDefinition />
         </Grid.RowDefinitions>
@@ -118,6 +123,6 @@
         <TextBlock Name="textBloclVersion"
                    Grid.Row="1"
                    d:Text="Test"
-                   VerticalAlignment="Center" />
+                   VerticalAlignment="Center" />               -->
     </Grid>
 </Window>
