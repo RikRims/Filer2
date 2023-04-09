@@ -1,19 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using Microsoft.WindowsAPICodePack.Dialogs;
-using System.Windows;
-using System.Reflection;
-using System.Windows.Forms;
-using System.Linq;
-using CheckBox = System.Windows.Controls.CheckBox;
-using Microsoft.VisualBasic.FileIO;
-using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Input;
 
 namespace Filer2
 {
-    public partial class MainWindow : Window
-    {
+	public partial class MainWindow : Window
+	{
+        
+		private void Border_MouseDown(object sender, MouseButtonEventArgs e)//перемещение окна
+		{
+			if(e.LeftButton == MouseButtonState.Pressed)
+				DragMove();
+		}
+        
+        #region обработка_кнопок_управляющих_окном 
+        private void ButtonMinimazed_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.WindowState = WindowState.Minimized;
+        }
+
+        private void WindowStateButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(Application.Current.MainWindow.WindowState != WindowState.Maximized)
+                Application.Current.MainWindow.WindowState = WindowState.Maximized;
+            else
+                Application.Current.MainWindow.WindowState = WindowState.Normal;
+        }
+
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        } 
+        #endregion
+
         //список форматов полученых с помощью AddFiles
         //private List<string> typeFiles = new();
         //public List<string> TypeFiles { get => typeFiles; set => typeFiles = value; }
@@ -115,8 +133,6 @@ namespace Filer2
         //        laeble.Text = dialog.FileName;
         //    }
         //}
-
-
         /// добавление форматов в List
         //private void AddFiles(object sender, RoutedEventArgs e)
         //{
