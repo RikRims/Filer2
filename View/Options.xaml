@@ -1,0 +1,63 @@
+﻿<UserControl x:Class="Filer2.View.Options"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:viewmodel="clr-namespace:Filer2.ViewModel">
+	<UserControl.DataContext>
+		<viewmodel:MainViewModel/>
+	</UserControl.DataContext>
+	
+	<UserControl.Resources>
+
+		<Style TargetType="{x:Type ToggleButton}">
+			<Setter Property="HorizontalAlignment" Value="Right"/>
+			<Setter Property="HorizontalContentAlignment" Value="Center"/>
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderThickness" Value="0"/>
+			<Setter Property="Margin" Value="0"/>
+		</Style>
+		
+		<Style TargetType="{x:Type Border}">
+			<Setter Property="Padding" Value="10,5" />
+			<Setter Property="BorderThickness" Value="0" />
+			<Setter Property="HorizontalAlignment" Value="Right" />
+			<Setter Property="Background" Value="#cccccc" />
+			<Setter Property="CornerRadius" Value="15" />
+		</Style>
+
+		<Style TargetType="{x:Type TextBlock}">
+			<Setter Property="Margin" Value="5"/>
+		</Style>
+
+	</UserControl.Resources>
+
+	<Grid>
+		<StackPanel Grid.Column="0"
+					Grid.Row="0">
+			<TextBlock Text="Выберите путь к файлам (рабочую область):"
+					   TextWrapping="Wrap" />
+			<Grid>
+				<TextBlock x:Name="addresOld" Margin="5,5,85,5" Text="{Binding AddresOldText}"/>
+				<ToggleButton>
+					<Border	MouseDown="Btn_addres_old_Click"
+						ToolTip="путь к файлам с которыми будем работать">
+						<TextBlock Text="Выбрать"/>
+					</Border>
+				</ToggleButton>
+			</Grid>
+			<TextBlock Text="Выберите, куда поместить файлы при перемещении:"
+					   TextWrapping="Wrap" />
+			<Grid Name="New_addres">
+				<TextBlock x:Name="addresNew" Margin="5,5,85,5" Text="{Binding AddresNewText}"/>
+				<ToggleButton>
+					<Border MouseDown="Btn_addres_new_Click"
+						ToolTip="куда спрятать эти файлы?">
+					<TextBlock Text="Выбрать" />
+				</Border>
+				</ToggleButton>
+			</Grid>
+		</StackPanel>
+	</Grid>
+	
+</UserControl>

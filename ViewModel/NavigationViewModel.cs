@@ -1,68 +1,74 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
+using System.Windows.Controls;
+using System.Windows;
 using System.Windows.Data;
 using Filer2.Model;
+using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace Filer2.ViewModel
 {
-    class NavigationViewModel : INotifyPropertyChanged
+    class NavigationViewModel
     {
-        private CollectionViewSource MenuItemsCollections;
-        public ICollectionView SourseCollection => MenuItemsCollections.View;
+		#region experiment
+		//private CollectionViewSource MenuItemsCollections;
+		//public ICollectionView SourseCollection => MenuItemsCollections.View;
 
-        public NavigationViewModel()
-        {
-            ObservableCollection<MenuItems> menuItems = new ObservableCollection<MenuItems>
-            {
-                new MenuItems { MenuName = "Home", MenuImg = @"Assets\icons\icons_V1.png"},
-                new MenuItems {MenuName = "Desctop", MenuImg = @"Assets\icons\icons_V2.png" },
-                new MenuItems {MenuName = "Documents", MenuImg = @"Assets\icons\icons_V2.png"},
-                new MenuItems {MenuName = "Downloads", MenuImg = @"Assets\icons\icons_V2.png"},
-                new MenuItems {MenuName = "Pictures", MenuImg = @"Assets\icons\icons_V2.png"},
-                new MenuItems {MenuName = "Music", MenuImg = @"Assets\icons\icons_V2.png"},
-                new MenuItems {MenuName = "Movies", MenuImg = @"Assets\icons\icons_V2.png"},
-                new MenuItems {MenuName = "Trash", MenuImg = @"Assets\icons\icons_V2.png"}
-            };
+		//public NavigationViewModel()
+		//{
+		//    ObservableCollection<MenuItems> menuItems = new ObservableCollection<MenuItems>
+		//    {
+		//        new MenuItems { MenuName = "Home", MenuImg = @"Assets\icons\icons_V1.png"},
+		//        new MenuItems {MenuName = "Desctop", MenuImg = @"Assets\icons\icons_V2.png" },
+		//        new MenuItems {MenuName = "Documents", MenuImg = @"Assets\icons\icons_V2.png"},
+		//        new MenuItems {MenuName = "Downloads", MenuImg = @"Assets\icons\icons_V2.png"},
+		//        new MenuItems {MenuName = "Pictures", MenuImg = @"Assets\icons\icons_V2.png"},
+		//        new MenuItems {MenuName = "Music", MenuImg = @"Assets\icons\icons_V2.png"},
+		//        new MenuItems {MenuName = "Movies", MenuImg = @"Assets\icons\icons_V2.png"},
+		//        new MenuItems {MenuName = "Trash", MenuImg = @"Assets\icons\icons_V2.png"}
+		//    };
 
-            MenuItemsCollections = new CollectionViewSource { Source = menuItems };
-            MenuItemsCollections.Filter += MenuItems_Filter;
-        }
+		//    MenuItemsCollections = new CollectionViewSource { Source = menuItems };
+		//    MenuItemsCollections.Filter += MenuItems_Filter;
+		//}
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void OnPropertyChanget(string PropertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
-        }
+		//public event PropertyChangedEventHandler PropertyChanged;
+		//private void OnPropertyChanget(string PropertyName)
+		//{
+		//    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
+		//}
 
-        private string filterText;
-        public string FilterText
-        {
-            get => filterText;
-            set
-            {
-                filterText = value;
-                MenuItemsCollections.View.Refresh();
-                OnPropertyChanget("FilterText");
-            }
-        }
+		//private string filterText;
+		//public string FilterText
+		//{
+		//    get => filterText;
+		//    set
+		//    {
+		//        filterText = value;
+		//        MenuItemsCollections.View.Refresh();
+		//        OnPropertyChanget("FilterText");
+		//    }
+		//}
 
-        private void MenuItems_Filter(object sender, FilterEventArgs e)
-        {
-            if(string.IsNullOrEmpty(FilterText))
-            {
-                e.Accepted = true;
-                return;
-            }
+		//private void MenuItems_Filter(object sender, FilterEventArgs e)
+		//{
+		//    if(string.IsNullOrEmpty(FilterText))
+		//    {
+		//        e.Accepted = true;
+		//        return;
+		//    }
 
-            MenuItems _items = e.Item as MenuItems;
-            if(_items.MenuName.ToUpper().Contains(FilterText.ToUpper()))
-            {
-                e.Accepted = true;
-            }
-            else
-            {
-                e.Accepted = false;
-            }
-        }
-    }
+		//    MenuItems _items = e.Item as MenuItems;
+		//    if(_items.MenuName.ToUpper().Contains(FilterText.ToUpper()))
+		//    {
+		//        e.Accepted = true;
+		//    }
+		//    else
+		//    {
+		//        e.Accepted = false;
+		//    }
+		//}
+		#endregion}
+	}
 }

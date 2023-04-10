@@ -4,6 +4,7 @@
 		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:viewmodel="clr-namespace:Filer2.ViewModel"
+		xmlns:view="clr-namespace:Filer2.View"
 		mc:Ignorable="d"
 		x:Name="Filer2"
 		WindowStartupLocation="CenterScreen"
@@ -15,21 +16,13 @@
 		MinHeight="580"
 		Icon="\Assets\icons\icons_V1.png"
 		Title="Filer 2">
+
 	<Window.DataContext>
 		<viewmodel:MainViewModel />
 	</Window.DataContext>
+
 	<Window.Resources>
 		<Style TargetType="CheckBox">
-			<Setter Property="Margin"
-					Value="10,5,0,0" />
-		</Style>
-		<Style TargetType="Button">
-			<Setter Property="Margin"
-					Value="5,5,5,5" />
-			<Setter Property="Padding"
-					Value="10,5" />
-		</Style>
-		<Style TargetType="TextBlock">
 			<Setter Property="Margin"
 					Value="10,5,0,0" />
 		</Style>
@@ -44,13 +37,16 @@
 					Value="Center" />
 		</Style>
 	</Window.Resources>
+
 	<Grid>
+
 		<Border Background="#ffffff"
 				CornerRadius="10"
 				MouseDown="Border_MouseDown">
+
 			<Grid>
 				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="250" />
 					<ColumnDefinition Width="3*" />
 				</Grid.ColumnDefinitions>
 				<Grid.RowDefinitions>
@@ -58,6 +54,8 @@
 					<RowDefinition Height="*" />
 					<RowDefinition Height="35" />
 				</Grid.RowDefinitions>
+
+				<!--Header-->
 				<StackPanel Grid.Column="1"
 							HorizontalAlignment="Right"
 							Orientation="Horizontal">
@@ -86,106 +84,37 @@
 							BorderThickness="0"
 							Click="CloseButton_Click" />
 				</StackPanel>
+
+				<!--Left window-->
 				<Border Background="#eeeeee"
-						BorderBrush="#ffffff"
-						BorderThickness="0,5,0,5"
 						Margin="6,0,3,0"
 						CornerRadius="25"
 						Grid.Column="0"
-						Grid.Row="1" />
+						Grid.Row="1">
+					<Grid>
+						<view:Options x:Name="options"/>
+						<view:DinamicCheckbox/>
+					</Grid>
+				</Border>
+
+				<!--Right window-->
 				<Border Background="#eeeeee"
-						BorderBrush="#ffffff"
-						BorderThickness="0,5,0,5"
 						Margin="3,0,6,0"
 						CornerRadius="25"
 						Grid.Column="1"
 						Grid.Row="1" />
-				<TextBlock Name="textBloclVersion"
-						   d:Text="Test"
+
+				<!--Footer-->
+				<TextBlock Text="{Binding Version}"
 						   Grid.Row="2"
 						   Grid.Column="1"
-						   HorizontalAlignment="Right"
-						   Margin="10,10,25,10" />
+						   HorizontalAlignment="Left"
+						   Margin="617,10,0,10" />
+
 			</Grid>
+
 		</Border>
-		<!--   <Grid.RowDefinitions>
-            <RowDefinition Height="7*" />
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        <GridSplitter Grid.Column="1"
-                      Grid.RowSpan="2"
-                      ShowsPreview="False"
-                      Width="3"
-                      HorizontalAlignment="Center"
-                      VerticalAlignment="Stretch" />
-        <StackPanel Name="GeneralButon"
-                    Orientation="Horizontal"
-                    HorizontalAlignment="Right"
-                    Grid.Column="2"
-                    Grid.Row="1">
-            <Button Content="Сканировать"
-                    ToolTip="Сканировать рабочую область"
-                    BorderThickness="0,0,0,0"
-                    Click="ScanWorkPath" />
-            <Button Content="Переместить"
-                    Click="FailMowe"
-                    BorderThickness="0,0,0,0" />
-            <Button Content="Удалить"
-                    Click="DeleteFile"
-                    ToolTip="Удаление может происходить с концами."
-                    BorderThickness="0,0,0,0" />
-        </StackPanel>
-        <StackPanel Name="Files"
-                    Grid.Column="2"
-                    Grid.Row="0">
-            <TextBlock Text="Отметте галочкой форматы файлов, которые хотите удалить или переместить."
-                       Width="339"
-                       TextWrapping="Wrap" />
-            <StackPanel Name="btn_all"
-                        Orientation="Horizontal">
-                <Button x:Name="btn_add_all"
-                        Content="Выбрать всё"
-                        ToolTip="Выбрать все файлы"
-                        BorderThickness="0,0,0,0"
-                        Click="SelectAll" />
-                <Button x:Name="btn_del_all"
-                        Content="Отменить"
-                        ToolTip="Отменить выбор всех файлов"
-                        BorderThickness="0,0,0,0"
-                        Click="SelectAll" />
-            </StackPanel>
-            <StackPanel x:Name="CheckBoxConteiner" />
-        </StackPanel>
-        <StackPanel Name="Option"
-                    Grid.Column="0"
-                    Grid.Row="0">
-            <TextBlock Text="Выберите путь к файлам (рабочую область):" />
-            <Grid Name="Old_addres">
-                <TextBlock x:Name="addresOld"
-                           HorizontalAlignment="Left" />
-                <Button x:Name="btn_addres_old"
-                        Content="Выбрать"
-                        HorizontalAlignment="Right"
-                        Click="Btn_addres_old_Click"
-                        ToolTip="путь к файлам с которыми будем работать"
-                        BorderThickness="0,0,0,0" />
-            </Grid>
-            <TextBlock Text="Выберите, куда поместить файлы при перемещении:" />
-            <Grid Name="New_addres">
-                <TextBlock x:Name="addresNew"
-                           HorizontalAlignment="Left" />
-                <Button x:Name="btn_addres_new"
-                        Content="Выбрать"
-                        HorizontalAlignment="Right"
-                        Click="Btn_addres_new_Click"
-                        ToolTip="куда спрятать эти файлы?"
-                        BorderThickness="0,0,0,0" />
-            </Grid>
-        </StackPanel>               -->
+
 	</Grid>
+
 </Window>
