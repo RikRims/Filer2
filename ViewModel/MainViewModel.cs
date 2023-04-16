@@ -28,7 +28,8 @@ namespace Filer2.ViewModel
 			set => Set(ref _addresOldText, value);
 		}
 		
-		private string _addresNewText = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Filer2\\" + nameDir;
+		private string _addresNewText = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Filer2\\" + nameDir[..10];
+
 
 		public string AddresNewText
 		{

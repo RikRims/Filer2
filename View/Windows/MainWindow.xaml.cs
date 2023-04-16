@@ -39,78 +39,7 @@ namespace Filer2
 		}
 		#endregion
 
-		//    Directory.CreateDirectory($"{addresNew.Text}\\logs");
-
-		#region удаление файлов
-		//private void DeleteFile(object sender, RoutedEventArgs e)
-		//{
-		//    if(TypeFiles.Count == 0)
-		//        System.Windows.Forms.MessageBox.Show("Вы не выбрали форматы файлов!", "Ошибка 1");
-		//    else
-		//    {
-		//        DialogResult dialogResult = System.Windows.Forms.MessageBox.Show(
-		//            "Удалить файлы полностью?",
-		//            "Удаление!", MessageBoxButtons.YesNo);
-		//        if(dialogResult == System.Windows.Forms.DialogResult.Yes)
-		//            foreach(string format in TypeFiles)
-		//            {
-		//                string[] _files = Directory.GetFiles(addresOld.Text, format);
-		//                foreach(string _file in _files)
-		//                {
-		//                    File.Delete(_file);
-		//                }
-		//            }
-		//        else
-		//        {
-		//            foreach(string format in TypeFiles)
-		//            {
-		//                string[] _files = Directory.GetFiles(addresOld.Text, format);
-		//                foreach(string _file in _files)
-		//                {
-		//                    FileSystem.DeleteFile(@_file, UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin);
-		//                }
-		//            }
-		//        }
-		//    }
-		//} 
-		#endregion
-
-		#region перемещение файлов
-		//private void FailMowe(object sender, RoutedEventArgs e)
-		//{
-		//    string pathFile = Path.GetFullPath($"{addresNew.Text}/logs/{nameDir}.txt");
-		//    using(StreamWriter log = File.Exists(pathFile) ? File.AppendText(pathFile) : File.CreateText(pathFile))
-		//    {
-		//        string text = $"{nameDir} --- Операция Перемещения --- {TypeFiles.Count} --- {addresNew.Text}";
-		//        log.WriteLine(text);
-		//    }
-		//    ошибка 2
-		//    if(addresNew.Text == "")
-		//    {
-		//        System.Windows.Forms.MessageBox.Show("Вы не выбрали путь до хранилища!", "Ошибка 2");
-		//        return;
-		//    }
-		//    ошибка 1
-		//    else if(TypeFiles.Count == 0)
-		//    {
-		//        System.Windows.Forms.MessageBox.Show("Вы не выбрали форматы файлов!", "Ошибка 1");
-		//        return;
-		//    }
-		//    else
-		//    {
-		//        foreach(var format in TypeFiles)
-		//        {
-		//            string[] _files = Directory.GetFiles(addresOld.Text, format);
-		//            foreach(string _file in _files)
-		//            {
-		//                string pathFale = addresNew.Text + "\\" + _file[(_file.LastIndexOf("\\") + 1)..];
-		//                File.Move(@_file, pathFale);
-		//            }
-		//        }
-		//        System.Windows.Forms.MessageBox.Show("Вы переместили выбранные файлы по следующему пути: " + addresNew.Text, "Перемещение!");
-		//    }
-		//}
-		#endregion
+		//    
 
 		//выбрать все чекбоксы ПОПРАВИТЬ!!!
 		//protected internal void SelectAll(object sender, RoutedEventArgs e)
