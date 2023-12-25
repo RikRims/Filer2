@@ -4,16 +4,11 @@
 		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:viewmodel="clr-namespace:Filer2.ViewModel"
-		xmlns:view="clr-namespace:Filer2.View"
 		mc:Ignorable="d"
 		x:Name="Filer2"
 		WindowStartupLocation="CenterScreen"
-		WindowStyle="None"
-		Background="Transparent"
-		AllowsTransparency="True"
+		WindowStyle="SingleBorderWindow"
 		ResizeMode="CanResizeWithGrip"
-		MinWidth="930"
-		MinHeight="580"
 		Icon="\Assets\icons\icons_V1.png"
 		Title="Filer 2">
 
@@ -23,66 +18,60 @@
 
 	<Grid>
 
-		<Border Background="#ffffff"
-				CornerRadius="10"
-				MouseDown="Border_MouseDown">
+		<Grid>
 
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="350" />
+				<ColumnDefinition />
+			</Grid.ColumnDefinitions>
+
+			<Grid.RowDefinitions>
+				<RowDefinition Height="35" />
+				<RowDefinition Height="*" />
+				<RowDefinition Height="35" />
+			</Grid.RowDefinitions>
+
+			<!--Left window-->
 			<Grid>
-				
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="350" />
-					<ColumnDefinition />
-				</Grid.ColumnDefinitions>
-				
-				<Grid.RowDefinitions>
-					<RowDefinition Height="35" />
-					<RowDefinition Height="*" />
-					<RowDefinition Height="35" />
-				</Grid.RowDefinitions>
 
-				<!--Header-->
-				<StackPanel Grid.Column="1"
-							HorizontalAlignment="Right"
-							Orientation="Horizontal">
-					<Button Padding="0"
-							Margin="0,0,0,3"
-							Width="25"
-							Height="25"
-							Content="🗕"
-							Background="Transparent"
-							BorderThickness="0"
-							Click="ButtonMinimazed_Click" />
-					<Button Padding="0"
-							Margin="0"
-							Width="25"
-							Height="25"
-							Content="🗖"
-							Background="Transparent"
-							BorderThickness="0"
-							Click="WindowStateButton_Click" />
-					<Button Padding="0"
-							Margin="0,0,3,0"
-							Width="25"
-							Height="25"
-							Content="╳"
-							Background="Transparent"
-							BorderThickness="0"
-							Click="CloseButton_Click" />
+				<Grid.RowDefinitions>
+					<RowDefinition />
+					<RowDefinition Height="auto"/>
+				</Grid.RowDefinitions>
+				<StackPanel>
+
+					<TextBlock Text="Выберите путь к файлам (рабочую область):" />
+					<StackPanel Orientation="Horizontal" >
+						<TextBlock x:Name="addresOld" Width="210" Text="{Binding AddresOldText}"/>
+						<Button Content="Выбрать" Height="37" Click="Btn_adders_old_Click" ToolTip="путь к файлам с которыми будем работать" />
+					</StackPanel>
+
+					<TextBlock Text="Выберите, куда поместить файлы при перемещении:" TextWrapping="Wrap" />
+					<StackPanel Orientation="Horizontal">
+						<TextBlock x:Name="addresNew" Width="210" Text="{Binding AddresNewText}"/>
+						<Button Content="Выбрать" Height="37" Click="Btn_adders_new_Click" ToolTip="куда спрятать эти файлы?"/>
+					</StackPanel>
+
+					<StackPanel Name="Files">
+						<TextBlock Width="320" Text="Отметте галочкой форматы файлов, которые хотите удалить или переместить." />
+						<StackPanel Name="btn_all" Orientation="Horizontal"></StackPanel>
+						<StackPanel x:Name="CheckBoxConteiner" />
+					</StackPanel>
+
 				</StackPanel>
 
-				<!--Left window-->
-
-				<view:Options x:Name="options" Grid.Row="1"/>
-
-				<!--Right window-->
-				
-				<!--Footer-->
-				<TextBlock Text="{Binding Version}" Grid.Row="2" Grid.Column="1" Height="15" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Right" />
-
+				<StackPanel Grid.Row="1" Orientation="Horizontal">
+					<Button Content="Сканировать" Click="ScanWorkPath" ToolTip="Сканировать рабочую область"/>
+					<Button Content="Переместить" Click="FailMove" />
+					<Button Content="Удалить" Click="DeleteFile" ToolTip="Удаление может происходить с концами."/>
+				</StackPanel>
 			</Grid>
 
-		</Border>
+			<!--Right window-->
 
+			<!--Footer-->
+			<TextBlock Text="{Binding Version}" Grid.Row="2" Grid.Column="1" Height="15" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Right" />
+
+		</Grid>
 	</Grid>
-
 </Window>

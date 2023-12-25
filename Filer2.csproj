@@ -8,7 +8,7 @@
     <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
     <StartupObject>Filer2.App</StartupObject>
     <Authors>$(Name)</Authors>
-    <AssemblyVersion>1.0.1.4</AssemblyVersion>
+    <AssemblyVersion>1.0.3.0</AssemblyVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

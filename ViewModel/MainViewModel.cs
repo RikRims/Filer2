@@ -6,7 +6,7 @@ namespace Filer2.ViewModel
 {
 	class MainViewModel : ViewModelBase
     {
-		//теккущая дата-время
+		//текущая дата-время
 		public static string nameDir = DateTime.Today.ToString();
 	    
 		#region записываем_номер_версии_программы_в_угол
