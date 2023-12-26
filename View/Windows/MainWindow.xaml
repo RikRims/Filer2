@@ -10,7 +10,7 @@
 		WindowStyle="SingleBorderWindow"
 		ResizeMode="CanResizeWithGrip"
 		Icon="\Assets\icons\icons_V1.png"
-		Title="Filer 2">
+		Title="Filer 2" d:DesignHeight="340" d:DesignWidth="425">
 
 	<Window.DataContext>
 		<viewmodel:MainViewModel />
@@ -26,41 +26,30 @@
 			</Grid.ColumnDefinitions>
 
 			<Grid.RowDefinitions>
-				<RowDefinition Height="35" />
 				<RowDefinition Height="*" />
 				<RowDefinition Height="35" />
 			</Grid.RowDefinitions>
 
 			<!--Left window-->
-			<Grid>
-
-				<Grid.RowDefinitions>
-					<RowDefinition />
-					<RowDefinition Height="auto"/>
-				</Grid.RowDefinitions>
+			<Grid Grid.Column="0" Grid.Row="0">
 				<StackPanel>
-
 					<TextBlock Text="Выберите путь к файлам (рабочую область):" />
 					<StackPanel Orientation="Horizontal" >
 						<TextBlock x:Name="addresOld" Width="210" Text="{Binding AddresOldText}"/>
-						<Button Content="Выбрать" Height="37" Click="Btn_adders_old_Click" ToolTip="путь к файлам с которыми будем работать" />
+						<Button Content="Выбрать" Click="Btn_adders_old_Click" ToolTip="путь к файлам с которыми будем работать" />
 					</StackPanel>
-
-					<TextBlock Text="Выберите, куда поместить файлы при перемещении:" TextWrapping="Wrap" />
+					<TextBlock Text="Выберите, куда поместить файлы при перемещении:"/>
 					<StackPanel Orientation="Horizontal">
 						<TextBlock x:Name="addresNew" Width="210" Text="{Binding AddresNewText}"/>
-						<Button Content="Выбрать" Height="37" Click="Btn_adders_new_Click" ToolTip="куда спрятать эти файлы?"/>
+						<Button Content="Выбрать" Click="Btn_adders_new_Click" ToolTip="куда спрятать эти файлы?"/>
 					</StackPanel>
-
 					<StackPanel Name="Files">
-						<TextBlock Width="320" Text="Отметте галочкой форматы файлов, которые хотите удалить или переместить." />
+						<TextBlock Text="Отметте галочкой форматы файлов, которые хотите удалить или переместить." />
 						<StackPanel Name="btn_all" Orientation="Horizontal"></StackPanel>
 						<StackPanel x:Name="CheckBoxConteiner" />
 					</StackPanel>
-
 				</StackPanel>
-
-				<StackPanel Grid.Row="1" Orientation="Horizontal">
+				<StackPanel VerticalAlignment="Bottom" Orientation="Horizontal">
 					<Button Content="Сканировать" Click="ScanWorkPath" ToolTip="Сканировать рабочую область"/>
 					<Button Content="Переместить" Click="FailMove" />
 					<Button Content="Удалить" Click="DeleteFile" ToolTip="Удаление может происходить с концами."/>
