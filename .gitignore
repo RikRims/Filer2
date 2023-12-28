@@ -1,0 +1,11 @@
+﻿################################################################################
+# Данный GITIGNORE-файл был автоматически создан Microsoft(R) Visual Studio.
+################################################################################
+
+/Filer2(UI)/obj/Debug/net7.0-windows/Filer2(UI).designer.runtimeconfig.json
+/Filer2(UI)/.vs/Filer2(UI)/DesignTimeBuild/.dtbcache.v2
+/Filer2(UI)/.vs/Filer2(UI)/DesignTimeBuild/.dtbcache.v2
+/Filer2(UI)/.vs/Filer2(UI)/DesignTimeBuild/.dtbcache.v2
+/Filer2(UI)/obj/Debug/net7.0-windows/Filer2(UI).designer.runtimeconfig.json
+*.vsidx
+/Filer2(UI)/.vs/Filer2(UI)/FileContentIndex/cd1cb424-5583-4fcd-96cd-2e2a80b986d2.vsidx
