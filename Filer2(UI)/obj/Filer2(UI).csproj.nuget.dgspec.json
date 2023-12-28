@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kiril\\source\\repos\\RikRims\\Filer2(UI)\\Filer2(UI).csproj": {}
+    "C:\\Users\\k.smirnov\\Source\\Repos\\RikRims\\Filer2\\Filer2(UI)\\Filer2(UI).csproj": {}
   },
   "projects": {
-    "C:\\Users\\kiril\\source\\repos\\RikRims\\Filer2(UI)\\Filer2(UI).csproj": {
+    "C:\\Users\\k.smirnov\\Source\\Repos\\RikRims\\Filer2\\Filer2(UI)\\Filer2(UI).csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kiril\\source\\repos\\RikRims\\Filer2(UI)\\Filer2(UI).csproj",
+        "projectUniqueName": "C:\\Users\\k.smirnov\\Source\\Repos\\RikRims\\Filer2\\Filer2(UI)\\Filer2(UI).csproj",
         "projectName": "Filer2(UI)",
-        "projectPath": "C:\\Users\\kiril\\source\\repos\\RikRims\\Filer2(UI)\\Filer2(UI).csproj",
-        "packagesPath": "C:\\Users\\kiril\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kiril\\source\\repos\\RikRims\\Filer2(UI)\\obj\\",
+        "projectPath": "C:\\Users\\k.smirnov\\Source\\Repos\\RikRims\\Filer2\\Filer2(UI)\\Filer2(UI).csproj",
+        "packagesPath": "C:\\Users\\k.smirnov\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\k.smirnov\\Source\\Repos\\RikRims\\Filer2\\Filer2(UI)\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\kiril\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\k.smirnov\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -38,11 +39,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -81,7 +77,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
         }
       }
     }
