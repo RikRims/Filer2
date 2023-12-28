@@ -1741,11 +1741,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\k.smirnov\\Source\\Repos\\RikRims\\Filer2\\Filer2(UI)\\Filer2(UI).csproj",
+      "projectUniqueName": "C:\\Users\\k.smirnov\\source\\repos\\RikRims\\Filer2\\Filer2(UI)\\Filer2(UI).csproj",
       "projectName": "Filer2(UI)",
-      "projectPath": "C:\\Users\\k.smirnov\\Source\\Repos\\RikRims\\Filer2\\Filer2(UI)\\Filer2(UI).csproj",
+      "projectPath": "C:\\Users\\k.smirnov\\source\\repos\\RikRims\\Filer2\\Filer2(UI)\\Filer2(UI).csproj",
       "packagesPath": "C:\\Users\\k.smirnov\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\k.smirnov\\Source\\Repos\\RikRims\\Filer2\\Filer2(UI)\\obj\\",
+      "outputPath": "C:\\Users\\k.smirnov\\source\\repos\\RikRims\\Filer2\\Filer2(UI)\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

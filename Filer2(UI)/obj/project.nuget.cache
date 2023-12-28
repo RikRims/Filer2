@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VOQKSPwWdBa9NY6k77uZn/kU94o0ZR+s/l/hU2ODN7s6V+qMM2SVcjY8+3dxk98eNJS8w2N8/hwSGic7yr1wTg==",
+  "dgSpecHash": "ojmyXfamxaTUIWaplyi7LBCghiq7PyJ/nlhWAZnkuMdWAkbikVN4BLgpRxjOmvAHsfv85RlkwJApRprSD96WPA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\k.smirnov\\Source\\Repos\\RikRims\\Filer2\\Filer2(UI)\\Filer2(UI).csproj",
+  "projectFilePath": "C:\\Users\\k.smirnov\\source\\repos\\RikRims\\Filer2\\Filer2(UI)\\Filer2(UI).csproj",
   "expectedPackageFiles": [
     "C:\\Users\\k.smirnov\\.nuget\\packages\\communitytoolkit.mvvm\\8.2.1\\communitytoolkit.mvvm.8.2.1.nupkg.sha512",
     "C:\\Users\\k.smirnov\\.nuget\\packages\\microsoft.extensions.configuration\\7.0.0\\microsoft.extensions.configuration.7.0.0.nupkg.sha512",
